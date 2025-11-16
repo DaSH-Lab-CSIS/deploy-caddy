@@ -11,6 +11,10 @@
         }
 
         handle @firefox {
+                basic_auth {
+                        dashlab "$2a$14$NdstASdOwki2.jH0Y/pxs.PVqfbnx2mdLUFfm87DdFmkI1DlTKAvK"
+                }
+                
                 reverse_proxy localhost:7814
         }
 
