@@ -1,6 +1,20 @@
-hollant.dashlab.in {
-    tls {
-        dns cloudflare {env.CLOUDFLARE_API_TOKEN}
-    }
-    reverse_proxy localhost:444
+*.dashlab.in, dashlab.in {
+        tls {
+                dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+        }
+
+        @hollant host hollant.dashlab.in
+        @firefox host firefox.dashlab.in
+
+        handle @hollant {
+                reverse_proxy localhost:444
+        }
+
+        handle @firefox {
+                reverse_proxy localhost:7814
+        }
+
+        handle {
+                abort
+        }
 }
