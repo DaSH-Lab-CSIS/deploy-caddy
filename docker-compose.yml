@@ -3,10 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - "80:80"
-      - "443:443"
-      - "443:443/udp"
+    network_mode: "host"
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data
