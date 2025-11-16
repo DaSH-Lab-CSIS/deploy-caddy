@@ -2,9 +2,5 @@ hollant.dashlab.in {
     tls {
         dns cloudflare {env.CLOUDFLARE_API_TOKEN}
     }
-    reverse_proxy https://hollant.dashlab.in:443 {
-        transport http {
-            tls
-        }
-    }
+    reverse_proxy localhost:444
 }
