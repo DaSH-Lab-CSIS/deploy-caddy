@@ -1,9 +1,20 @@
 services:
   caddy:
-    image: caddy:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "80:80"
+      - "443:443"
+      - "443:443/udp"
     volumes:
-      - /srv:/usr/share/caddy:ro
       - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    environment:
+      - CLOUDFLARE_API_TOKEN=${CLOUDFLARE_API_TOKEN}
     restart: unless-stopped
+
+volumes:
+  caddy_data:
+  caddy_config:
