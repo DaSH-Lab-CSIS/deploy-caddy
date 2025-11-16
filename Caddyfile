@@ -1,4 +1,10 @@
-:80 {
-    root * /usr/share/caddy
-    file_server browse
+hollant.dashlab.in {
+    tls {
+        dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+    }
+    reverse_proxy https://hollant.dashlab.in:443 {
+        transport http {
+            tls
+        }
+    }
 }
