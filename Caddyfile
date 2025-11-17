@@ -5,6 +5,7 @@
 
         @hollant host hollant.dashlab.in
         @firefox host firefox.dashlab.in
+        @wg host wg.dashlab.in
 
         handle @hollant {
                 reverse_proxy localhost:444
@@ -16,6 +17,10 @@
                 }
                 
                 reverse_proxy localhost:7814
+        }
+
+        handle @wg {
+                reverse_proxy localhost:51821
         }
 
         handle {
